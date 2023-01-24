@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainPage.qml</file>
+        <file>LoginPage.qml</file>
+        <file>RegisterPage.qml</file>
+        <file>SavePage.qml</file>
+        <file>TransferPage.qml</file>
+        <file>CheckPage.qml</file>
+        <file>DrawPage.qml</file>
+        <file>MyQmlObject/MyButtonStyle.qml</file>
+        <file>MyQmlObject/MyInputRectangle.qml</file>
+        <file>MyQmlObject/MyMessageDialog.qml</file>
+        <file>MyQmlObject/MyTextInput.qml</file>
+    </qresource>
+</RCC>
