@@ -26,7 +26,7 @@ Rectangle {
             }
         }
 
-        onClicked: myLoader.sourceComponent = savePage // 切换显示登录页面
+        onClicked: myStackView.push(savePage) // switch to savePage
     }
 
     Button {
@@ -40,7 +40,7 @@ Rectangle {
                 text: "汇款"
             }
         }
-        onClicked: myLoader.sourceComponent = transferPage // 切换显示登录页面
+        onClicked: myStackView.push(transferPage) // switch to transferPage
     }
 
     signal checkSig()
@@ -64,12 +64,12 @@ Rectangle {
                 networkWrong.open();
             }
             else{
-                 myLoader.sourceComponent = checkPage // 切换显示登录页面
+                 myStackView.push(checkPage) // switch to checkPage
             }
         }
     }
     Connections{
-        target:myLoader.item
+        target:mainPage.item
         function onCheckSig(){
             user.checkSlot()
         }
@@ -88,7 +88,7 @@ Rectangle {
         }
         onClicked:{
           client.disconnect()
-          myLoader.sourceComponent = loginPage // 切换显示登录页面
+          myStackView.pop() // back to loginPage
         }
     }
 
@@ -103,7 +103,7 @@ Rectangle {
                 text: "取款"
             }
         }
-        onClicked: myLoader.sourceComponent = drawPage // 切换显示登录页面
+        onClicked: myStackView.push(drawPage) // switch to drawPage
     }
 }
 

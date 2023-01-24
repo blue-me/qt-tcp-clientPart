@@ -5,8 +5,8 @@ import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.3
 import "./MyQmlObject"
 Rectangle {
-    width: 360
-    height: 640
+    width: parent.width
+    height: parent.height
 
     MyMessageDialog {
         id: passwordNotSame
@@ -28,7 +28,7 @@ Rectangle {
         text: "注册成功"
         onYes: {
             close()
-            myLoader.sourceComponent = loginPage
+            myStackView.pop()
         }
     }
 
@@ -86,6 +86,7 @@ Rectangle {
     signal registerSig(string name,string password)
 
     Button {
+        id:registerPageSureButton
         text: "确认"
         x:100
         y:200
@@ -126,7 +127,7 @@ Rectangle {
     }
 
     Connections{
-        target:myLoader.item
+        target:registerPage.item
         function onRegisterSig(name,password){
             user.registerSlot(name,password)
             console.log("send registerSig")
@@ -140,6 +141,6 @@ Rectangle {
 
         style:MyButtonStyle{}
 
-        onClicked: myLoader.sourceComponent = loginPage // 切换显示主页面
+        onClicked: myStackView.pop() // back to mainPage
     }
 }

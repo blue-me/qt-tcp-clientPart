@@ -43,6 +43,8 @@ bool TcpClient::send(Message m)
     if(detect != -1){
         qDebug()<<"client send to client OK";
         qDebug()<<"Amount:"<<m.number;
+        qDebug()<<m.info_name;
+        qDebug()<<m.info_password;
         return 1;
     }
     else return 0;

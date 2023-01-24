@@ -8,8 +8,8 @@ import QtQuick.Dialogs 1.3
 import "./MyQmlObject"
 
 Rectangle {
-    width: 360
-    height: 640
+    width: parent.width
+    height: parent.height
 
 
     MyMessageDialog {
@@ -84,7 +84,9 @@ Rectangle {
                     userWrong.open();
                 }
                 else{
-                     myLoader.sourceComponent = mainPage
+                     usernameInput.clear()
+                     userpasswordInput.clear()
+                     myStackView.push(mainPage)
                 }
             }
             else{
@@ -95,9 +97,10 @@ Rectangle {
     }
 
     Connections{
-        target:myLoader.item
+        target:LoginPage.item
         function onLoginSig(name,password){
             user.loginSlot(name,password)
+            console.log(name)
         }
     }
 
@@ -109,6 +112,6 @@ Rectangle {
 
         style:MyButtonStyle{}
 
-        onClicked: myLoader.sourceComponent = registerPage
+        onClicked: myStackView.push(registerPage)
     }
 }
