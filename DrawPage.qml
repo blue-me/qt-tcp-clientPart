@@ -7,8 +7,8 @@ import QtQuick.Layouts 1.15
 import "./MyQmlObject"
 
 Rectangle {
-    width: 360
-    height: 640
+    width: parent.width
+    height: parent.height
     property double remainAmount:0
 
     MyMessageDialog {
@@ -28,7 +28,7 @@ Rectangle {
         text: "操作成功！"
         onYes:{
             close()
-            myLoader.sourceComponent = mainPage
+            myStackView.pop()
         }
     }
 
@@ -87,7 +87,7 @@ Rectangle {
     }
 
     Connections{
-        target:myLoader.item
+        target:drawPage.item
         function onDrawSig(moneyAmount){
             user.drawAndSaveSlot(moneyAmount * (-1))
             console.log("Draw success")
@@ -101,6 +101,6 @@ Rectangle {
 
         style:MyButtonStyle{}
 
-        onClicked: myLoader.sourceComponent = mainPage
+        onClicked: myStackView.pop()
     }
 }

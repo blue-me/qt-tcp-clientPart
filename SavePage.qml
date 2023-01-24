@@ -6,8 +6,8 @@ import QtQuick.Dialogs 1.3
 import "./MyQmlObject"
 
 Rectangle {
-    width: 360
-    height: 640
+    width: parent.width
+    height: parent.height
 
     MyMessageDialog {
         id: noLegalSaveAmountDialog
@@ -19,7 +19,7 @@ Rectangle {
         text: "操作成功！"
         onYes:{
             close()
-            myLoader.sourceComponent = mainPage
+            myStackView.pop()
         }
 
     }
@@ -77,7 +77,7 @@ Rectangle {
 
 
     Connections{
-        target:myLoader.item
+        target:savePage.item
         function onSaveSig(moneyAmount){
             user.drawAndSaveSlot(moneyAmount)
             console.log("Save success")
@@ -91,6 +91,6 @@ Rectangle {
 
         style:MyButtonStyle{}
 
-        onClicked: myLoader.sourceComponent = mainPage
+        onClicked: myStackView.pop()
     }
 }

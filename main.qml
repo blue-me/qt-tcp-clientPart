@@ -21,11 +21,52 @@ Window {
     }
 
     //选项的两页面
-    Loader{
-        id:myLoader
-        anchors.centerIn: parent
+//    Loader{
+//        id:myLoader
+//        anchors.centerIn: parent
+//    }
+//    Component.onCompleted: myLoader.sourceComponent=loginPage
+
+    StackView{
+        anchors.top:parent.top
+
+        id:myStackView
+        initialItem: loginPage
+
+        //determine the methods of transition
+        pushEnter: Transition {
+                 PropertyAnimation {
+                     property: "opacity"
+                     from: 0
+                     to:1
+                     duration: 200
+                 }
+             }
+             pushExit: Transition {
+                 PropertyAnimation {
+                     property: "opacity"
+                     from: 1
+                     to:0
+                     duration: 200
+                 }
+             }
+             popEnter: Transition {
+                 PropertyAnimation {
+                     property: "opacity"
+                     from: 0
+                     to:1
+                     duration: 200
+                 }
+             }
+             popExit: Transition {
+                 PropertyAnimation {
+                     property: "opacity"
+                     from: 1
+                     to:0
+                     duration: 200
+                 }
+             }
     }
-    Component.onCompleted: myLoader.sourceComponent=loginPage
 
 
     Component{
