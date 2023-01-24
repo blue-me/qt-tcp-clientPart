@@ -6,8 +6,8 @@ import QtQml 2.14
 import userExample 1.0
 import "./MyQmlObject"
 Rectangle{
-    width:360
-    height:640
+    width:parent.width
+    height:parent.height
 
     Row{
         id:check
@@ -36,7 +36,7 @@ Rectangle{
         style:MyButtonStyle{}
 
         onClicked:{
-            myLoader.sourceComponent = mainPage
+            myStackView.pop()
         }
     }
 }

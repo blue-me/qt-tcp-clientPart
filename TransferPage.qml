@@ -6,8 +6,8 @@ import QtQuick.Controls.Styles 1.4
 import "./MyQmlObject"
 
 Rectangle{
-    width:360
-    height:640
+    width:parent.width
+    height:parent.height
     property double amount:0
 
     MyMessageDialog{
@@ -33,7 +33,7 @@ Rectangle{
         text: "操作成功！"
         onYes:{
             close()
-            myLoader.sourceComponent = mainPage
+            myStackView.pop()
         }
     }
 
@@ -116,7 +116,7 @@ Rectangle{
     }
 
     Connections{
-        target:myLoader.item
+        target:transferPage.item
         function onTransferSig(userName,moneyAmount){
             user.transferSlot(userName,moneyAmount)
             console.log("Draw success")
@@ -131,6 +131,6 @@ Rectangle{
 
         style:MyButtonStyle{}
 
-        onClicked: myLoader.sourceComponent = mainPage
+        onClicked: myStackView.pop()
     }
 }
